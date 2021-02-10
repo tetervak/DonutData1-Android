@@ -61,14 +61,13 @@ class DonutListFragment : Fragment() {
         binding.recyclerView.addItemDecoration(divider)
         binding.recyclerView.adapter = adapter
 
+        binding.viewModel = listViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         binding.fab.setOnClickListener {
             findNavController().navigate(
                 DonutListFragmentDirections.actionListToEntry(null)
             )
-        }
-
-        listViewModel.donuts.observe(viewLifecycleOwner){
-            adapter.submitList(it)
         }
 
         return binding.root
