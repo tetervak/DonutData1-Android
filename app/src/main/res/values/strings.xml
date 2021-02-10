@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">DonutData</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Donut Data</string>
+
+    <!-- menu item -->
+    <string name="action_about">About</string>
 
     <!-- donut list item layout -->
     <string name="donut_picture">Picture of donut</string>
@@ -16,5 +18,9 @@
     <string name="save">Save</string>
     <string name="donut_list_label">Donut List</string>
     <string name="donut_entry_label">Donut Entry</string>
+
+    <!-- about dialog -->
+    <string name="about">About</string>
+    <string name="author">Alex Tetervak, Sheridan College, 2020</string>
 
 </resources>
