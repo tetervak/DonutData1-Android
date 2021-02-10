@@ -40,9 +40,9 @@ class DonutListFragment : Fragment() {
 
     private val adapter = DonutListAdapter(
         onEdit = { donut ->
-//            findNavController().navigate(
-//                DonutListFragmentDirections.actionListToEntry(donut.id)
-//            )
+            findNavController().navigate(
+                DonutListFragmentDirections.actionListToEntry(donut.id)
+            )
         },
         onDelete = { donut ->
             mainViewModel.delete(donut)
@@ -62,9 +62,9 @@ class DonutListFragment : Fragment() {
         binding.recyclerView.adapter = adapter
 
         binding.fab.setOnClickListener {
-//            findNavController().navigate(
-//                DonutListFragmentDirections.actionListToEntry(null)
-//            )
+            findNavController().navigate(
+                DonutListFragmentDirections.actionListToEntry(null)
+            )
         }
 
         listViewModel.donuts.observe(viewLifecycleOwner){

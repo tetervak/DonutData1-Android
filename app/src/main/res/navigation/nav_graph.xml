@@ -7,6 +7,20 @@
     <fragment
         android:id="@+id/donutListFragment"
         android:name="ca.tetervak.donutdata.ui.donutlist.DonutListFragment"
-        android:label="DonutListFragment"
-        tools:layout="@layout/donut_list_fragment"/>
+        android:label="@string/donut_list_label"
+        tools:layout="@layout/donut_list_fragment">
+        <action
+            android:id="@+id/action_list_to_entry"
+            app:destination="@id/donutEntryDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/donutEntryDialog"
+        android:name="ca.tetervak.donutdata.ui.donutentry.DonutEntryDialog"
+        android:label="@string/donut_entry_label"
+        tools:layout="@layout/donut_entry_dialog">
+        <argument
+            android:name="donutId"
+            app:argType="string"
+            app:nullable="true" />
+    </dialog>
 </navigation>

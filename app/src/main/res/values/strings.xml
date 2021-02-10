@@ -14,5 +14,7 @@
     <string name="donut_description">Description</string>
     <string name="donut_rating">Rating</string>
     <string name="save">Save</string>
+    <string name="donut_list_label">Donut List</string>
+    <string name="donut_entry_label">Donut Entry</string>
 
 </resources>
