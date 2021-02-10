@@ -10,6 +10,10 @@
 
     <!-- donut list fragment layout -->
     <string name="add_donut_info">Add more donut info!</string>
+    <plurals name="donut_count">
+        <item quantity="one">Donut Count: %1$d donut</item>
+        <item quantity="other">Donut Count: %1$d donuts</item>
+    </plurals>
 
     <!-- donut entry dialog -->
     <string name="donut_name">Donut name</string>
