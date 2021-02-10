@@ -53,12 +53,8 @@ class DonutEntryDialog : BottomSheetDialogFragment() {
 
         val binding = DonutEntryDialogBinding.inflate(inflater, container, false)
 
-        Log.d(TAG, "onCreateView: donutId = " + safeArgs.donutId)
-        donutEntryViewModel.loadData(safeArgs.donutId)
-
-        donutEntryViewModel.donut.observe(viewLifecycleOwner) { donut ->
-            binding.donut = donut
-        }
+        binding.viewModel = donutEntryViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.saveButton.setOnClickListener {
             mainViewModel.save(

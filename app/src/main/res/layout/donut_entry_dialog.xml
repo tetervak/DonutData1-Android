@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="ca.tetervak.donutdata.domain.Donut"/>
-        <variable name="donut" type="Donut" />
+        <import type="ca.tetervak.donutdata.ui.donutentry.DonutEntryViewModel"/>
+        <variable name="viewModel" type="DonutEntryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{donut.name}"
+            android:text="@{viewModel.donut.name}"
             tools:text="@string/donut_name"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -80,7 +80,7 @@
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
-            android:text="@{donut.description}"
+            android:text="@{viewModel.donut.description}"
             tools:text="@string/donut_description"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -130,7 +130,7 @@
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:rating="@{donut.rating}"
+            android:rating="@{viewModel.donut.rating}"
             tools:rating="3"
             android:stepSize="0.5"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"

@@ -8,23 +8,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DonutEntryViewModel @Inject constructor(
-        private val repository: DonutRepository
+    savedStateHandle: SavedStateHandle,
+    private val repository: DonutRepository
 ) : ViewModel() {
 
-    private val donutId = MutableLiveData<String?>()
-
-    fun loadData(id: String?) {
-        donutId.value = id
-    }
+    private val donutId: String? = savedStateHandle["donutId"]
 
     val donut: LiveData<Donut> =
-            donutId.switchMap { id ->
                 liveData {
-                    if (id == null) {
+                    if (donutId == null) {
                         emit(Donut(null, "", "", 3.0F))
                     } else {
-                        emit(repository.get(id))
+                        emit(repository.get(donutId))
                     }
                 }
-            }
 }
