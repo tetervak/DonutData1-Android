@@ -31,6 +31,10 @@ class DonutRepositoryRoom @Inject constructor(private val donutDao: DonutDao)
     override suspend fun update(donut: Donut) {
         donutDao.update(donut.asEntity())
     }
+
+    override suspend fun deleteAll() {
+        donutDao.deleteAll()
+    }
 }
 
 fun DonutEntity.asDonut(): Donut {

@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Donut Data</string>
 
-    <!-- menu item -->
+    <!-- menu item3 -->
     <string name="action_about">About</string>
+    <string name="action_clear">Clear</string>
 
     <!-- donut list item layout -->
     <string name="donut_picture">Picture of donut</string>
