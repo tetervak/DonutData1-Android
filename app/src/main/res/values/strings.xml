@@ -7,4 +7,7 @@
     <string name="donut_picture">Picture of donut</string>
     <string name="delete_donut">delete donut</string>
 
+    <!-- donut list fragment layout -->
+    <string name="add_donut_info">Add more donut info!</string>
+
 </resources>
