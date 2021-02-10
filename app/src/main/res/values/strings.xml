@@ -3,11 +3,16 @@
     <string name="action_settings">Settings</string>
 
     <!-- donut list item layout -->
-    <string name="donut_name">donutName</string>
     <string name="donut_picture">Picture of donut</string>
     <string name="delete_donut">delete donut</string>
 
     <!-- donut list fragment layout -->
     <string name="add_donut_info">Add more donut info!</string>
+
+    <!-- donut entry dialog -->
+    <string name="donut_name">Donut name</string>
+    <string name="donut_description">Description</string>
+    <string name="donut_rating">Rating</string>
+    <string name="save">Save</string>
 
 </resources>

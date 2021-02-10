@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@{donut.name}"
-            tools:text="@string/donut_name"
+            tools:text="Donut"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/rating"
