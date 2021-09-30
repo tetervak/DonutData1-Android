@@ -7,7 +7,7 @@ import ca.tetervak.donutdata.domain.Donut
 
 @BindingAdapter("donutCount")
 fun bindDonutCount(textView: TextView, list: List<Donut>?){
-    val count = list?.size ?: 0;
+    val count = list?.size ?: 0
     textView.text =
         textView.resources.getQuantityString(R.plurals.donut_count, count, count)
 }

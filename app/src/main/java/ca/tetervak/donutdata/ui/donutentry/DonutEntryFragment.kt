@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import ca.tetervak.donutdata.MainViewModel
 import ca.tetervak.donutdata.databinding.DonutEntryFragmentBinding
 import ca.tetervak.donutdata.domain.Donut
-import ca.tetervak.donutdata.ui.donutlist.DonutListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
