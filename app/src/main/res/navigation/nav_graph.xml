@@ -28,7 +28,7 @@
     </fragment>
     <dialog
         android:id="@+id/aboutDialog"
-        android:name="ca.tetervak.donutdata.about.AboutDialog"
+        android:name="ca.tetervak.donutdata.ui.about.AboutDialog"
         android:label="AboutDialog" />
     <action android:id="@+id/action_global_about" app:destination="@id/aboutDialog" />
 </navigation>

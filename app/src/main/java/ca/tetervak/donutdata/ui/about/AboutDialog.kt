@@ -1,4 +1,4 @@
-package ca.tetervak.donutdata.about
+package ca.tetervak.donutdata.ui.about
 
 import android.app.Dialog
 import android.os.Bundle
