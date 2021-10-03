@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/DonutData/app/src/main/res/layout/content_main.xml" value="0.2526041666666667" />
+        <entry key="..\:/Android/DonutData1a/app/src/main/res/layout/confirmation_dialog.xml" value="0.25" />
         <entry key="..\:/Android/DonutData1a/app/src/main/res/layout/donut_entry_fragment.xml" value="0.2578125" />
         <entry key="..\:/Android/DonutData1a/app/src/main/res/layout/donut_list_fragment.xml" value="0.20885416666666667" />
         <entry key="..\:/Android/DonutData1a/app/src/main/res/menu/menu_list.xml" value="0.14322916666666666" />
+        <entry key="..\:/Android/DonutData1a/app/src/main/res/xml/root_preferences.xml" value="0.290625" />
       </map>
     </option>
   </component>

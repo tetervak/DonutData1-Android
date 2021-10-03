@@ -37,6 +37,10 @@ class DonutRepositoryRoom @Inject constructor(private val donutDao: DonutDao)
         }
     }
 
+    override suspend fun delete(id: String) {
+        donutDao.delete(id.toLong())
+    }
+
     override suspend fun update(donut: Donut) {
         donutDao.update(donut.asEntity())
     }

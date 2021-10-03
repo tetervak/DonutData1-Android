@@ -1,25 +1,37 @@
 package ca.tetervak.donutdata.ui.donutlist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.donutdata.MainViewModel
 import ca.tetervak.donutdata.R
 import ca.tetervak.donutdata.databinding.DonutListFragmentBinding
+import ca.tetervak.donutdata.ui.dialogs.ConfirmationDialog
+import ca.tetervak.donutdata.ui.settings.DonutDataSettings
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-/**
- * Fragment containing the RecyclerView which shows the current list of donuts being tracked.
- */
 @AndroidEntryPoint
 class DonutListFragment : Fragment() {
 
+    companion object{
+        const val TAG = "DonutListFragment"
+        const val CONFIRM_CLEAR_ALL: Int = 1
+        const val CONFIRM_DELETE_ITEM: Int = 2
+    }
+
     private val donutListViewModel: DonutListViewModel by viewModels()
     private val mainViewModel: MainViewModel by activityViewModels()
+    private lateinit var navController: NavController
+
+    @Inject
+    lateinit var settings: DonutDataSettings
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,17 +45,27 @@ class DonutListFragment : Fragment() {
     ): View {
 
         val binding = DonutListFragmentBinding.inflate(inflater, container, false)
+        navController = findNavController()
 
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.recyclerView.addItemDecoration(divider)
         val adapter = DonutListAdapter(
             onEdit = { donut ->
-                findNavController().navigate(
+                navController.navigate(
                     DonutListFragmentDirections.actionListToEntry(donut.id)
                 )
             },
             onDelete = { donut ->
-                mainViewModel.delete(donut)
+                if(settings.confirmDelete){
+                    val action = DonutListFragmentDirections.actionListToConfirmationDialog(
+                        getString(R.string.confirm_delete_message),
+                        CONFIRM_DELETE_ITEM,
+                        donut.id
+                    )
+                    navController.navigate(action)
+                }else{
+                    mainViewModel.delete(donut)
+                }
             }
         )
         binding.recyclerView.adapter = adapter
@@ -52,9 +74,28 @@ class DonutListFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.fab.setOnClickListener {
-            findNavController().navigate(
+            navController.navigate(
                 DonutListFragmentDirections.actionListToEntry(null)
             )
+        }
+
+        ConfirmationDialog.setResultListener(this, R.id.donutListFragment) {
+            when (it?.requestCode) {
+                CONFIRM_CLEAR_ALL -> {
+                    Log.d(TAG, "onCreateView: clear all is confirmed")
+                    donutListViewModel.deleteAll()
+                    if(it.doNotAskAgain){
+                        settings.confirmClear = false
+                    }
+                }
+                CONFIRM_DELETE_ITEM -> {
+                    Log.d(TAG, "onCreateView: delete item id=${it.itemId} is confirmed")
+                    mainViewModel.delete(it.itemId!!)
+                    if(it.doNotAskAgain){
+                        settings.confirmDelete = false
+                    }
+                }
+            }
         }
 
         return binding.root
@@ -68,7 +109,16 @@ class DonutListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_clear -> {
+                if(settings.confirmClear){
+                    val action = DonutListFragmentDirections.actionListToConfirmationDialog(
+                        getString(R.string.confirm_clear_message),
+                        CONFIRM_CLEAR_ALL,
+                        null
+                    )
+                    navController.navigate(action)
+                }else{
                     donutListViewModel.deleteAll()
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
