@@ -9,6 +9,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DonutRepositoryModule {
+
+    @Singleton
     @Binds
     abstract fun bindDonutRepository(repository: DonutRepositoryRoom): DonutRepository
 }
