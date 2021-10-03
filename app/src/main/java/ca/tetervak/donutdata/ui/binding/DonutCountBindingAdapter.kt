@@ -1,4 +1,4 @@
-package ca.tetervak.donutdata.binding
+package ca.tetervak.donutdata.ui.binding
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
