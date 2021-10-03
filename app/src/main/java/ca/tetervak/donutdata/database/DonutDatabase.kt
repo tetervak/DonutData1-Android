@@ -1,6 +1,7 @@
 package ca.tetervak.donutdata.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -11,12 +12,15 @@ abstract class DonutDatabase : RoomDatabase() {
     abstract fun donutDao(): DonutDao
 
     companion object {
+
+        private const val TAG = "DonutDatabase"
+
         @Volatile private var INSTANCE: DonutDatabase? = null
 
         fun getInstance(context: Context): DonutDatabase {
-            val tempInstance =
-                INSTANCE
+            val tempInstance = INSTANCE
             if (tempInstance != null) {
+                Log.d(TAG, "getInstance: the database object is returned")
                 return tempInstance
             }
             synchronized(this) {
@@ -26,6 +30,7 @@ abstract class DonutDatabase : RoomDatabase() {
                     "donut_database"
                 ).build()
                 INSTANCE = instance
+                Log.d(TAG, "getInstance: the database object is created")
                 return instance
             }
         }

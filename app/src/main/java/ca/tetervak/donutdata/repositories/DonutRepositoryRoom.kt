@@ -1,5 +1,6 @@
 package ca.tetervak.donutdata.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import ca.tetervak.donutdata.database.DonutDao
@@ -9,6 +10,14 @@ import javax.inject.Inject
 
 class DonutRepositoryRoom @Inject constructor(private val donutDao: DonutDao)
     : DonutRepository {
+
+    companion object{
+        private const val TAG = "DonutRepositoryRoom"
+    }
+
+    init{
+        Log.d(TAG, "init: the DonutRepositoryRoom object is created")
+    }
 
     override fun getAll(): LiveData<List<Donut>> {
         return Transformations.map(donutDao.getAll()) { list -> list.map { it.asDonut() }}

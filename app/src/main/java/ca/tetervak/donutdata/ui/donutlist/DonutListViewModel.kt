@@ -1,5 +1,6 @@
 package ca.tetervak.donutdata.ui.donutlist
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,13 +11,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * This ViewModel is used to access the underlying data and to observe changes to it.
- */
 @HiltViewModel
 class DonutListViewModel @Inject constructor(
     private val repository: DonutRepository
 ) : ViewModel() {
+
+    companion object{
+        private const val TAG = "DonutListViewModel"
+    }
+
+    init{
+        Log.d(TAG, "init: the DonutListViewModel object is created")
+    }
 
     // Users of this ViewModel will observe changes to its donuts list to know when
     // to redisplay those changes

@@ -1,5 +1,6 @@
 package ca.tetervak.donutdata
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ca.tetervak.donutdata.domain.Donut
@@ -13,6 +14,14 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val repository: DonutRepository
 ) : ViewModel() {
+
+    companion object{
+        private const val TAG = "MainViewModel"
+    }
+
+    init {
+        Log.d(TAG, "init: the MainViewModel is created")
+    }
 
     fun delete(donut: Donut) =
         viewModelScope.launch(Dispatchers.IO) {
