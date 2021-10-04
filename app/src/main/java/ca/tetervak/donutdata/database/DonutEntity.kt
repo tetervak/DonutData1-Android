@@ -13,13 +13,8 @@ data class DonutEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
 
-    @ColumnInfo(name = "name")
     val name: String,
-
-    @ColumnInfo(name = "description")
     val description: String = "",
-
-    @ColumnInfo(name = "rating")
     val rating: Float,
 
     @ColumnInfo(name = "low_fat")
